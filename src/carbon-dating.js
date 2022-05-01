@@ -18,12 +18,12 @@ const HALF_LIFE_PERIOD = 5730;
  *
  */
 function dateSample( sampleActivity ) {
-  let numberActivity = parseFloat(sampleActivity);
-    if (numberActivity > 15 || numberActivity <= 0) {
-      return false
-    } else {
-  return Math.ceil(Math.log(MODERN_ACTIVITY / numberActivity) / (0.693 / HALF_LIFE_PERIOD)) 
-  }
+  let numberActivity = parseFloat(sampleActivity)
+    if (!numberActivity || typeof sampleActivity != 'string' || numberActivity > 15 || numberActivity < 1) {
+        return false
+      } else {
+    return Math.ceil(Math.log(MODERN_ACTIVITY / numberActivity) / (0.693 / HALF_LIFE_PERIOD)) 
+    }
 }
 
 module.exports = {
